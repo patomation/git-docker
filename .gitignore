@@ -1,0 +1,6 @@
+*.swp
+repos/*
+!repos/.gitkeep
+.ssh/*
+!.ssh/.gitkeep
+temp
