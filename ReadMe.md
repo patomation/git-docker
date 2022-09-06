@@ -31,7 +31,7 @@ cat ~/.ssh/id_rsa_new-key | xsel --clipboard --input
 ```
 2. append to .ssh/authorized_keys volume
 ```s
-cat ~/.ssh/id_rsa_new-key >> .ssh/authorized_keys
+cat ~/.ssh/id_rsa_git-server.pub > .ssh/authorized_keys
 ```
 
 ## 2. MAKE BARE GIT REPO
