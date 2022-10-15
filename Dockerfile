@@ -26,7 +26,7 @@ RUN rc-update add sshd
 # RUN adduser git --disabled-password --gecos ""
 RUN adduser -h /home/git -s /bin/sh -D git
 # Probably should change this password to something else
-RUN echo -n 'git:$PASSWORD' | chpasswd
+RUN echo -n "git:$PASSWORD" | chpasswd
 
 # Set up git folders
 RUN su git
