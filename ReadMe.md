@@ -63,6 +63,13 @@ Host 127.0.0.1
 Port 2222
 ```
 
+The other thing you can do is use the port in the git remote like this:
+origin	ssh://git@192.0.0.0:2222/home/git/repos/my-repo-name
+origin	ssh://git@192.0.0.0:2222/repos/my-repo-name
+otherwise you have to use port 22...which might not work out to well when getting into the host system... so this is a problem 
+
+
+
 ## Further Reading
 https://www.inmotionhosting.com/support/website/git/git-server/
 https://git-scm.com/book/en/v2/Git-on-the-Server-Setting-Up-the-Server
