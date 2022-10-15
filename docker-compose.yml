@@ -9,6 +9,7 @@ services:
       - "2222:22"
     volumes:
       - './repos:/home/git/repos'
+      - './repos:/repos'
       - './.ssh:/home/git/.ssh'
     restart: unless-stopped
 
