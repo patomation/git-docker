@@ -11,7 +11,7 @@ RUN apk add -u awall
 COPY ./awall-ssh.json /etc/awall/optional/ssh.json
 RUN awall enable ssh
 
-RUN echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config
+# RUN echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config
 
 RUN git config --global init.defaultBranch main
 
