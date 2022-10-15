@@ -2,6 +2,8 @@ FROM alpine:latest
 
 LABEL MAINTAINER="Patrick Kelly patomation@gmail.com"
 
+ARG PASSWORD
+
 RUN apk update && apk upgrade
 RUN apk add git
 RUN apk add openrc
@@ -23,15 +25,15 @@ RUN rc-update add sshd
 # Set up "git" user
 # RUN adduser git --disabled-password --gecos ""
 RUN adduser -h /home/git -s /bin/sh -D git
-# Probably should change this password to something else
-RUN echo -n 'git:password' | chpasswd
+# Probably should change this password to something else
+RUN echo -n 'git:$PASSWORD' | chpasswd
 
 # Set up git folders
 RUN su git
 RUN cd
 RUN mkdir .ssh && chmod 700 .ssh
 RUN touch .ssh/authorized_keys && chmod 600 .ssh/authorized_keys
-# NOTE: /home/git/repos and /repos are the same docker volume
+# NOTE: /home/git/repos and /repos are the same docker volume
 # Make repo folder in home. USAGE: git remote add origin git@server/repos 
 RUN mkdir /home/git/repos
 # Make another repo folder in root.

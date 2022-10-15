@@ -5,11 +5,12 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
+      args:
+        PASSWORD: ${PASSWORD}
     ports:
-      - "2222:22"
+      - "${PORT}:22"
     volumes:
-      - './repos:/home/git/repos'
-      - './repos:/repos'
-      - './.ssh:/home/git/.ssh'
+      - '${REPOS}:/home/git/repos'
+      - '${REPOS}:/repos'
     restart: unless-stopped
 

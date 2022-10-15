@@ -2,6 +2,35 @@
 Another git Dockerfile implementation.
 Was built to learn git ssh with  docker
 
+## Getting Started
+*server*
+1. Copy the env file and change the password and repo path
+ `cp .env.example .env`
+2. Build the docker image
+`docker compose build`
+3. Start the server
+`docker compose up`
+*client*
+4. Create ssh key (optional)
+```
+ssh-keygen -t ed25519 -C "name@mail.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
+5. add ssh key to server and enter password once
+`ssh-copy-id -i ~/.ssh/id_ed25519.pub -p 2222 git@127.0.0.1`
+6. now you can ssh into the server without a password
+`ssh -p git@127.0.0.1`
+7. See bare repo
+```
+mkdir ./repos/website.git
+cd ./repos/website.git
+git init --bare
+```
+8. Add the remote to the repo and push and pull away
+`git remote add origin ssh://git@127.0.0.1/repos/website.git`
+
+
 ## Features
 - Alpine base
 - EZ setup
@@ -23,7 +52,9 @@ Was built to learn git ssh with  docker
 ## 1. SSH KEY SETUP
 1. make an ssh key follow the promps
 ```s
-ssh-keygen
+ssh-keygen -t ed25519 -C "name@mail.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
 ```
 copy to clip board (optional)
 ```s
